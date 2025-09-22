@@ -1,0 +1,136 @@
+/* --- IMPORTAÇÃO DO GOOGLE FONTS --- */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap' );
+
+/* Estilo para o corpo da página */
+body {
+    background-image: url('fundo.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    filter: brightness(0.4);
+    font-family: 'Lato', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1a1a1a;
+}
+
+/* Container principal que alinha o conteúdo na página */
+.content-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 5vh auto;
+    border-radius: 10px;
+}
+
+/* CABEÇALHO FIXO (STICKY) */
+.sticky-header {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    background-color: rgba(10, 10, 10, 0.95);
+    padding: 20px;
+    border-radius: 10px 10px 0 0;
+    z-index: 10;
+}
+
+/* ÁREA DO ARTIGO */
+article {
+    background-color: rgba(36, 0, 0, 0.85);
+    padding: 20px;
+    border-radius: 0 0 10px 10px;
+}
+
+/* Estilos para os textos (h1, h2, p, .credit-text) */
+h1 { color: #ffffff; font-family: 'Playfair Display', serif; text-align: center; text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.7); font-size: 3em; margin: 0; }
+h2 { color: #ffffff; font-family: 'Playfair Display', serif; text-align: center; text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.7); font-size: 2em; font-style: italic; font-weight: normal; line-height: 1.5; margin: 0.1em 0 0 0; }
+p { color: #ffffff; font-size: 1.5em; line-height: 1.5; text-align: justify; margin-bottom: 1em; }
+.credit-text { font-size: 0.9em; text-align: right; font-style: italic; opacity: 0.7; }
+
+/* --- Media Query para Responsividade --- */
+@media (max-width: 768px) {
+    .content-container { margin: 0; border-radius: 0; }
+    .sticky-header, article { border-radius: 0; padding: 20px; }
+    h1 { font-size: 2.2em; }
+    h2 { font-size: 1.6em; }
+    p { font-size: 1.1em; }
+    #background-music { width: 100%; bottom: 0; right: 0; left: 0; border-radius: 0; opacity: 0.9; transform: none; }
+}
+
+/* --- ESTILO DO PLAYER DE ÁUDIO (PARA DESKTOP) - CORRIGIDO --- */
+#background-music {
+    position: fixed; 
+    right: 20px;
+    top: 50%; /* Erro corrigido aqui */
+    transform: rotate(90deg);
+    transform-origin: right bottom;
+    width: 300px;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+#background-music:hover { opacity: 1; right: 25px; }
+
+/* --- EFEITO DE PARTÍCULAS FLORESCENTES --- */
+#particle-container {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: -1;
+}
+.particle {
+    position: absolute;
+    background: #ffac69;
+    border-radius: 50%;
+    box-shadow: 0 0 10px 2px #ffac69, 0 0 20px 5px #ff7b00, 0 0 30px 8px #c54900;
+    animation-name: moveParticles;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+@keyframes moveParticles {
+    0% { opacity: 0; } 10% { opacity: 1; } 90% { opacity: 1; }
+    100% { transform: translate(calc(100vw * var(--x-end)), calc(100vh * var(--y-end))); opacity: 0; }
+}
+
+/* --- EFEITO DE PAPÉIS QUEIMANDO - CORRIGIDO E FORMATADO --- */
+#burning-paper-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -2; /* Z-index mais baixo para ficar atrás das partículas */
+}
+.burning-paper {
+    position: absolute;
+    border-radius: 50%; /* Formato de brasa, mais orgânico */
+    
+    /* A MÁGICA: Gradiente radial para simular uma brasa quente no centro */
+    background: radial-gradient(circle, #ffd18a 0%, #ff7b00 50%, #c54900 80%, transparent 100%);
+    
+    /* Animações combinadas: movimento, rotação e o novo brilho pulsante */
+    animation-name: floatPaper, rotatePaper, pulseGlow;
+    animation-timing-function: linear, ease-in-out, ease-in-out;
+    animation-iteration-count: infinite, infinite, infinite;
+    animation-direction: normal, alternate, alternate;
+}
+
+/* Animação de brilho pulsante */
+@keyframes pulseGlow {
+    from {
+        box-shadow: 0 0 15px 5px #ff7b00;
+    }
+    to {
+        box-shadow: 0 0 25px 10px #ff7b00;
+    }
+}
+
+/* Animação de movimento suave (sem alterações) */
+@keyframes floatPaper {
+    0% { transform: translateY(110vh) translateX(var(--x-start)); opacity: 0; }
+    10% { opacity: 0.7; }
+    90% { opacity: 0.7; }
+    100% { transform: translateY(-10vh) translateX(var(--x-end)); opacity: 0; }
+}
+
+/* Animação de rotação suave (sem alterações) */
+@keyframes rotatePaper {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
