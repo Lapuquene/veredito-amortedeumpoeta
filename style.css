@@ -42,7 +42,7 @@ article {
 
 /* Estilos para os textos (h1, h2, p, .credit-text) */
 h1 { color: #ffffff; font-family: 'Playfair Display', serif; text-align: center; text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.7); font-size: 3em; margin: 0; }
-h2 { color: #ffffff; font-family: 'Playfair Display', serif; text-align: center; text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.7); font-size: 2em; font-style: italic; font-weight: normal; line-height: 1.5; margin: 0.1em 0 0 0; }
+h2 { color: #ffffff; font-family: 'Playfair Display', serif; text-align: center; text-shadow: 2px 2px 5px rgba(255, 255, 255, 0.7); font-size: 1.5em; font-style: italic; font-weight: normal; line-height: 1.5; margin: 0.1em 0 0 0; }
 p { color: #ffffff; font-size: 1.5em; line-height: 1.5; text-align: justify; margin-bottom: 1em; }
 .credit-text { font-size: 0.9em; text-align: right; font-style: italic; opacity: 0.7; }
 
